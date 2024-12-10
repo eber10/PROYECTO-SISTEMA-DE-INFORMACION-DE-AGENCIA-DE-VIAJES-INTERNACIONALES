@@ -6,7 +6,8 @@ using namespace std;
 int main(){
 	Sistema sistema;
     sistema.cargarPasajerosDesdeArchivo("pasajeros.txt");
-	
+	sistema.cargarReservasDesdeArchivo("reservas.txt");
+
     bool salir1=false, salir2=false, salir3=false, salir4=false;
     char opcionPrincipal;
     do
@@ -117,21 +118,40 @@ int main(){
 					{
                         case '1': 
 						{
+							string destino, fecha, ordenAsiento;
+                            double pago; 
+                            cout << "Destino: ";
+                            cin.ignore();
+                            getline(cin, destino);
+                            cout << "Ingrese fecha: ";
+                            getline(cin, fecha);
+                            cout << "Ingrese orden de asiento: ";
+                            getline(cin, ordenAsiento);
+                            cout<< "Ingese el monto: S/. ";
+                            cin >> pago; 
+                            Reserva reserva(destino, fecha, ordenAsiento, pago);
+                            sistema.agregarReserva(reserva);
                             cout << "Reserva registrada con exito.\n";
                             system("pause");
                             break;
                         }
                         case '2':
                         {
+                        	sistema.mostrarReserva();
                             system("pause");
                             break;
 						}
                         case '3':
                         {
+                        	size_t posicion1;
+            				cout << "Ingrese el indice de la reserva a eliminar: ";
+            				cin >> posicion1;
+           					sistema.eliminarReserva(posicion1);
                         	break;
 						}
                         case '4':
                         {
+                        	sistema.guardarReservasEnArchivo("reservas.txt");
                             cout << "Reservas guardadas con exito.\n";
                             system("pause");
                             break;
