@@ -4,6 +4,8 @@
 using namespace std;
 
 int main(){
+	Sistema sistema;
+    sistema.cargarPasajerosDesdeArchivo("pasajeros.txt");
 	
     bool salir1=false, salir2=false, salir3=false, salir4=false;
     char opcionPrincipal;
@@ -44,21 +46,39 @@ int main(){
 					{
                         case '1': 
 						{
+                            string nombre, DNI, telefono, destino;
+                            cout << "Ingrese nombre: ";
+                            cin.ignore();
+                            getline(cin, nombre);
+                            cout << "Ingrese DNI: ";
+                            getline(cin, DNI);
+                            cout << "Ingrese telefono: ";
+                            getline(cin, telefono);
+                            cout << "Ingrese destino: ";
+                            getline(cin, destino);
+                            Pasajero pasajero(nombre, DNI, telefono, destino);
+                            sistema.agregarPasajero(pasajero);
                             cout << "Pasajero registrado con exito.\n";
                             system("pause");
                             break;
                         }
                         case '2':
                         {
+                            sistema.mostrarPasajeros();
                             system("pause");
                             break;
 						}
                         case '3':
 						{
+							size_t posicion;
+            				cout << "Ingrese el indice del pasajero a eliminar: ";
+            				cin >> posicion;
+            				sistema.eliminarPasajeros(posicion);                        	
                         	break;
 						}
                         case '4':
                         {
+                            sistema.guardarPasajerosEnArchivo("pasajeros.txt");
                             cout << "Datos guardados con exito.\n";
                             system("pause");
                             break;
