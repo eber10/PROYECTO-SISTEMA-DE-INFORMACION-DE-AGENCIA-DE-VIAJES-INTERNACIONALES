@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-Reserva::Reserva(const std::string& destino, const string& fecha, const string& ordenAsiento, const double& pago)
+Reserva::Reserva(const string& destino, const string& fecha, const string& ordenAsiento, const double& pago)
     : destino(destino), fecha(fecha), ordenAsiento(ordenAsiento), pago(pago) {}
 
 double Reserva::getPago() const {
