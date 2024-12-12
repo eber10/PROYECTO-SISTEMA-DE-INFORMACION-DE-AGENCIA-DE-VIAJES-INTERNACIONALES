@@ -10,6 +10,7 @@ class Sistema
 	private:
     	vector<Pasajero> listaPasajeros;
         vector<Reserva> listaReserva;
+        vector<Vuelo> listaVuelos;
 
 	public:
     void agregarPasajero(const Pasajero& pasajero);
@@ -23,6 +24,11 @@ class Sistema
     void eliminarReserva(size_t posicion);
     void guardarReservasEnArchivo(const string& nombreArchivo) const;
     void cargarReservasDesdeArchivo(const std::string& nombreArchivo);
+    void agregarVuelo(const Vuelo& vuelo);
+    void mostrarVuelos() const;
+    void eliminarVuelo(size_t posicion);
+    void guardarVuelosEnArchivo(const string& nombreArchivo) const;
+    void cargarVuelosDesdeArchivo(const std::string& nombreArchivo);
 };
 
 #endif

@@ -163,4 +163,82 @@ void Sistema::cargarReservasDesdeArchivo(const string& nombreArchivo) {
     archivo.close();
 }
 
+void Sistema::agregarVuelo(const Vuelo& vuelo) {
+    listaVuelos.push_back(vuelo);
+    cout << "Vuelo agregado correctamente.\n";
+}
+
+
+void Sistema::mostrarVuelos() const {
+    if (listaVuelos.empty()) {
+        cout << "No hay vuelos registrados.\n";
+        return;
+    }
+
+    cout << "\nLista de vuelos:\n";
+    for (const auto& vuelos : listaVuelos) {
+        vuelos.mostrarDatos();
+        cout << "---------------------\n";
+    }
+}
+void Sistema::eliminarVuelo(size_t posicion) {
+    if (posicion < listaVuelos.size()) {
+        listaVuelos.erase(listaVuelos.begin() + posicion);
+        cout << "vuelo eliminado correctamente.\n";
+    } else {
+        cout << "Posicion invalida. No se pudo eliminar el vuelo.\n";
+    }
+}
+void Sistema::guardarVuelosEnArchivo(const string& nombreArchivo) const {
+    ofstream archivo(nombreArchivo, ios::app); 
+
+    if (!archivo.is_open()) 
+	{
+        cout << "No se pudo abrir el archivo para guardar los datos.\n";
+        return;
+    }
+
+    for (const auto& vuelo : listaVuelos) {
+        archivo << "Origen: " << vuelo.getOrigen() << "\n";
+        archivo << "Destino: " << vuelo.getDestino() << "\n";
+        archivo << "Duracion: " << vuelo.getDuracion() << "\n";
+        archivo << "Estado: " << vuelo.getEstado() << "\n";
+        archivo << "---------------------\n";
+    }
+
+    archivo.close(); 
+    cout << "Datos de los vuelos guardados en el archivo " << nombreArchivo << " correctamente.\n";
+}
+
+void Sistema::cargarVuelosDesdeArchivo(const string& nombreArchivo) {
+    ifstream archivo(nombreArchivo);  
+
+    if (!archivo.is_open()) {
+        cout << "No se pudo abrir el archivo para leer los datos.\n";
+        return;
+    }
+
+    string origen, destino, duracion, estado;
+    string linea;
+    
+    while (getline(archivo, linea))
+	{
+  		if(linea.find("Origen: ") == 0) 
+		{  
+            origen = linea.substr(8);
+            getline(archivo, linea); 
+            destino = linea.substr(9);   
+            getline(archivo, linea); 
+            duracion = linea.substr(10); 
+            getline(archivo, linea);  
+            estado = linea.substr(8);
+
+        Vuelo vuelo(origen, destino, duracion, estado);
+        listaVuelos.push_back(vuelo);
+        }
+   }
+
+    archivo.close();
+}
+
 

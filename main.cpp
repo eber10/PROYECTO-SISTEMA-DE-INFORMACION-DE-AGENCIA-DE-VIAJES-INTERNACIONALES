@@ -7,6 +7,7 @@ int main(){
 	Sistema sistema;
     sistema.cargarPasajerosDesdeArchivo("pasajeros.txt");
 	sistema.cargarReservasDesdeArchivo("reservas.txt");
+	sistema.cargarVuelosDesdeArchivo("vuelos.txt");
 
     bool salir1=false, salir2=false, salir3=false, salir4=false;
     char opcionPrincipal;
@@ -177,12 +178,12 @@ int main(){
 				{
                     system("cls");
                     cout << "|==================================|" << endl;
-                    cout << "|          MENU RESERVAS           |" << endl;
+                    cout << "|          MENU VUELOS             |" << endl;
                     cout << "|==================================|" << endl;
-                    cout << "|1. Registrar reserva              |" << endl;
-                    cout << "|2. Mostrar reservas               |" << endl;
-                    cout << "|3. Eliminar reservas              |" << endl;
-                    cout << "|4. Guardar reservas               |" << endl;
+                    cout << "|1. Registrar Vuelo                |" << endl;
+                    cout << "|2. Mostrar Vuelo                  |" << endl;
+                    cout << "|3. Eliminar Vuelo                 |" << endl;
+                    cout << "|4. Guardar Vuelo                  |" << endl;
                     cout << "|x. Volver al menu principal       |" << endl;
                     cout << "|----------------------------------|" << endl;
                     cin >> opcionVuelo;
@@ -190,22 +191,41 @@ int main(){
                     {
                         case '1': 
 						{
-                            cout << "Reserva registrada con exito.\n";
+							string origen, destino, duracion, estado;
+            				cout << "Ingrese origen: ";
+            				cin.ignore();
+            				getline(std::cin, origen);
+           					cout << "Ingrese destino: ";
+            				getline(std::cin, destino);
+            				cout << "Ingrese duracion: ";
+            				getline(std::cin, duracion);
+            				cout << "Ingrese estado:";
+            				getline(std::cin, estado);
+
+            				Vuelo vuelo(origen, destino, duracion, estado);
+            				sistema.agregarVuelo(vuelo);
+                            cout << "Vuelo registrada con exito.\n";
                             system("pause");
                             break;
                         }
                         case '2':
                         {
+                        	sistema.mostrarVuelos();
                             system("pause");
                             break;    
 						}
                         case '3':
                         {
+                        	size_t posicion2;
+            				cout << "Ingrese el indice del vuelo a eliminar: ";
+            				cin >> posicion2;
+            				sistema.eliminarVuelo(posicion2); 
                         	break;	
 						}
                         case '4':
                         {
-                            cout << "Reservas guardadas con exito.\n";
+                        	sistema.guardarVuelosEnArchivo("vuelos.txt");
+                            cout << "Vuelos guardadas con exito.\n";
                             system("pause");
                             break;    
 						}
@@ -219,14 +239,12 @@ int main(){
                             cout << "Opcion no valida. Intente nuevamente.\n";
                             system("pause");
 						}
-						
 					}
                 }while(!salir4);
                 break;
 			}			
             case 'x':
             {
-				
                 salir1=true;
                 cout << "Saliendo del sistema...\n";
                 system("pause");
