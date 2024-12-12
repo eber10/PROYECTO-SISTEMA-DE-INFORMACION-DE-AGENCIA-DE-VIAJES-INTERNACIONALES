@@ -25,6 +25,7 @@ int main(){
         cout << "|3. Gestion de vuelos              |" << endl;
         cout << "|x. Salir                          |" << endl;
         cout << "|----------------------------------|" << endl;
+        cout << "Ingrese una opcion: ";
         cin >> opcionPrincipal;
         switch (opcionPrincipal)
 		{
@@ -43,6 +44,7 @@ int main(){
                     cout << "|4. Guardar pasajeros              |" << endl;
                     cout << "|x. Volver al menu principal       |" << endl;
                     cout << "|----------------------------------|" << endl;
+                    cout << "Ingrese una opcion: ";
                     cin >> opcionPasajero;
                     switch (opcionPasajero)
 					{
@@ -114,6 +116,7 @@ int main(){
                     cout << "|4. Guardar Vuelo                  |" << endl;
                     cout << "|x. Volver al menu principal       |" << endl;
                     cout << "|----------------------------------|" << endl;
+                    cout << "Ingrese una opcion: ";
                     cin >> opcionReservas;
                     switch (opcionReservas) 
 					{
@@ -186,6 +189,7 @@ int main(){
                     cout << "|4. Guardar Vuelo                  |" << endl;
                     cout << "|x. Volver al menu principal       |" << endl;
                     cout << "|----------------------------------|" << endl;
+                    cout << "Ingrese una opcion: ";
                     cin >> opcionVuelo;
                     switch (opcionVuelo)
                     {
