@@ -10,7 +10,7 @@ class Pasajero {
     	string telefono;
     	string destino;
 	public:
-    	Pasajero(const std::string& nombre, const std::string& DNI, const std::string& telefono, const std::string& destino);
+    	Pasajero(const string& nombre, const string& DNI, const string& telefono, const string& destino);
     	string getNombre() const;
     	string getDNI() const;
     	string getTelefono() const;

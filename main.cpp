@@ -110,10 +110,10 @@ int main(){
                     cout << "|==================================|" << endl;
                     cout << "|          MENU RESERVAS           |" << endl;
                     cout << "|==================================|" << endl;
-                    cout << "|1. Registrar Vuelo                |" << endl;
-                    cout << "|2. Mostrar Vuelo                  |" << endl;
-                    cout << "|3. Eliminar Vuelo                 |" << endl;
-                    cout << "|4. Guardar Vuelo                  |" << endl;
+                    cout << "|1. Registrar reserva              |" << endl;
+                    cout << "|2. Mostrar reserva                |" << endl;
+                    cout << "|3. Eliminar reserva               |" << endl;
+                    cout << "|4. Guardar reserva                |" << endl;
                     cout << "|x. Volver al menu principal       |" << endl;
                     cout << "|----------------------------------|" << endl;
                     cout << "Ingrese una opcion: ";
