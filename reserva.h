@@ -11,7 +11,7 @@ private:
     double pago; 
 
 public:
-    Reserva(const std::string& destino, const std::string& fecha , const std::string& ordenAsiento, const double& pago);
+    Reserva(const string& destino, const string& fecha , const string& ordenAsiento, const double& pago);
 	
 	string getDestino() const;
     string getFecha() const;
